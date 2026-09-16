@@ -1,4 +1,7 @@
 com/example/auth/dto/LoginRequest.class
+com/example/auth/entity/Employee$Address.class
+com/example/auth/controller/EmployeeController.class
+com/example/auth/service/EmployeeQueryService.class
 com/example/auth/controller/TestController.class
 com/example/auth/dto/ProductResponse.class
 com/example/auth/entity/User.class
@@ -9,8 +12,11 @@ com/example/auth/dto/MessageResponse.class
 com/example/auth/config/SecurityConfig.class
 com/example/auth/security/AuthEntryPointJwt.class
 com/example/auth/repository/UserRepository.class
+com/example/auth/service/EmployeeService.class
 com/example/auth/entity/Product.class
 com/example/auth/security/AuthTokenFilter.class
+com/example/auth/service/UserDetailsServiceImpl.class
+com/example/auth/repository/EmployeeRepository.class
 com/example/auth/entity/Role.class
 com/example/auth/dto/ProductPatchRequest.class
 com/example/auth/service/ProductService.class
@@ -19,7 +25,7 @@ com/example/auth/security/UserDetailsImpl.class
 com/example/auth/service/AuthService.class
 com/example/auth/dto/ProductRequest.class
 com/example/auth/controller/AuthController.class
-com/example/auth/security/UserDetailsServiceImpl.class
 com/example/auth/controller/ProductController.class
 com/example/auth/security/JwtUtils.class
 com/example/auth/dto/JwtResponse.class
+com/example/auth/entity/Employee.class

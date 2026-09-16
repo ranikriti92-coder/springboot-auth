@@ -2,7 +2,7 @@ package com.example.auth.config;
 
 import com.example.auth.security.AuthEntryPointJwt;
 import com.example.auth.security.AuthTokenFilter;
-import com.example.auth.security.UserDetailsServiceImpl;
+import com.example.auth.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -59,6 +59,7 @@ public class SecurityConfig {
                 // Public endpoints
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
+
                 // Everything else needs a valid JWT
                 .anyRequest().authenticated()
             )
