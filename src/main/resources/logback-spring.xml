@@ -1,0 +1,45 @@
+<!-- src/main/resources/logback-spring.xml -->
+<configuration>
+
+    <!-- ① CONSOLE APPENDER: print logs to terminal (normal text) -->
+    <appender name="CONSOLE"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- ② LOGSTASH APPENDER: send logs to Logstash as JSON -->
+    <appender name="LOGSTASH"
+              class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+
+        <!-- Point to Logstash running on your machine -->
+        <destination>localhost:5001</destination>
+
+        <!-- Format logs as JSON -->
+        <encoder
+                class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- Add custom fields to every log entry -->
+            <customFields>
+                {"app_name":"my-spring-app",
+                "team":"backend-team"}
+            </customFields>
+        </encoder>
+
+        <!-- If Logstash is down, keep trying to reconnect -->
+        <reconnectionDelay>10 seconds</reconnectionDelay>
+    </appender>
+
+    <!-- ③ ROOT LOGGER: send ALL logs to both appenders -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>    <!-- print to terminal -->
+        <appender-ref ref="LOGSTASH"/>  <!-- send to Kibana -->
+    </root>
+
+    <!-- ④ Reduce noise from Spring framework logs -->
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.hibernate"      level="WARN"/>
+
+</configuration>
